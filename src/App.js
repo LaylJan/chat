@@ -6,8 +6,11 @@ function App() {
   const [newMessage, setNewMessage] = useState("");
 
   useEffect(() => {
-    fetch("");
-  });
+    fetch("http://localhost:3000/a")
+      .then((res) => res.json())
+      .then((data) => setMessages(data))
+      .catch((err) => console.log(err));
+  }, []);
 
   const handleSendMessage = () => {
     if (newMessage.trim()) {
@@ -26,7 +29,7 @@ function App() {
       <div style={{ width: "100%" }}>
         <div className="Messages">
           <div className="chats">
-            <h2>messages</h2>
+            <div className="bubble">this is a message</div>
           </div>
         </div>
         <div className="Text" style={{ display: "flex", alignItems: "center" }}>
