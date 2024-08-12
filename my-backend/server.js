@@ -6,10 +6,14 @@ const app = express();
 app.use(cors());
 
 const db = mysql.createConnection({
-  host: "%",
+  host: "localhost",
   user: "Lyle",
   password: "qwerty",
   database: "messages",
+});
+
+app.get("/", (re, res) => {
+  return res.json("Fromback");
 });
 
 app.get("/a", (req, res) => {
