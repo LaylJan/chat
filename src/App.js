@@ -1,9 +1,13 @@
 import "./App.css";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 
 function App() {
   const [messages, setMessages] = useState([]);
   const [newMessage, setNewMessage] = useState("");
+
+  useEffect(() => {
+    fetch("");
+  });
 
   const handleSendMessage = () => {
     if (newMessage.trim()) {

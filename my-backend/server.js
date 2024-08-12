@@ -9,11 +9,18 @@ const db = mysql.createConnection({
   host: "%",
   user: "Lyle",
   password: "qwerty",
-  database: "chat",
+  database: "messages",
 });
 
-app.get("/", (re, res) => {
-  const sql = "SELECT * FROM";
+app.get("/a", (req, res) => {
+  const sql = "SELECT * FROM chats";
+  db.query(sql, (err, data) => {
+    if (err) {
+      console.error("Error executing query:", err);
+      return res.status(500).json(err);
+    }
+    return res.json(data);
+  });
 });
 
 app.listen(3000, () => {
