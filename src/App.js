@@ -4,6 +4,7 @@ import React, { useState, useEffect } from "react";
 function App() {
   const [messages, setMessages] = useState([]);
   const [newMessage, setNewMessage] = useState("");
+  const [name, setName] = useState("");
 
   useEffect(() => {
     fetch("http://localhost:3000/messages")
@@ -13,9 +14,27 @@ function App() {
   }, []);
 
   const handleSendMessage = () => {
+    setName("asd");
+    console.log("=========================");
+
     if (newMessage.trim()) {
-      setMessages([...messages, newMessage]);
-      setNewMessage("");
+      const messageToSend = { name: name, message: newMessage };
+
+      fetch("http://localhost:3000/messages", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(messageToSend),
+      })
+        .then((res) => res.json())
+        .then((data) => {
+          if (data.success) {
+            setMessages([...messages, messageToSend]);
+            setNewMessage(""); // Clear the input field after sending
+          }
+        })
+        .catch((err) => console.log(err));
     }
   };
 

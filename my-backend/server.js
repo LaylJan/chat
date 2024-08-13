@@ -4,6 +4,7 @@ const cors = require("cors");
 
 const app = express();
 app.use(cors());
+app.use(express.json());
 
 const db = mysql.createConnection({
   host: "localhost",
@@ -24,6 +25,19 @@ app.get("/messages", (req, res) => {
       return res.status(500).json(err);
     }
     return res.json(data);
+  });
+});
+
+app.post("/messages", (req, res) => {
+  const { name, message } = req.body;
+  const sql = "INSERT INTO chats (name, message) VALUES (?, ?)";
+
+  db.query(sql, [name, message], (err, result) => {
+    if (err) {
+      console.error("Error executing query:", err);
+      return res.status(500).json(err);
+    }
+    return res.json({ success: true, result });
   });
 });
 
