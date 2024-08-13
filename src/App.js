@@ -6,7 +6,7 @@ function App() {
   const [newMessage, setNewMessage] = useState("");
 
   useEffect(() => {
-    fetch("http://localhost:3000/a")
+    fetch("http://localhost:3000/messages")
       .then((res) => res.json())
       .then((data) => setMessages(data))
       .catch((err) => console.log(err));
@@ -29,7 +29,11 @@ function App() {
       <div style={{ width: "100%" }}>
         <div className="Messages">
           <div className="chats">
-            <div className="bubble">this is a message</div>
+            {messages.map((messageObj, index) => (
+              <div key={index} className="bubble">
+                {messageObj.message}
+              </div>
+            ))}
           </div>
         </div>
         <div className="Text" style={{ display: "flex", alignItems: "center" }}>

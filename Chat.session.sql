@@ -5,7 +5,7 @@ CREATE TABLE chats (
 );
 
 -- @block
-INSERT INTO chats (name, message) VALUES ('Brian', 'Doing fine!');
+INSERT INTO chats (name, message) VALUES ('Pia', 'Update');
 
 -- @block
 ALTER USER 'Lyle'@'%' IDENTIFIED WITH mysql_native_password BY 'qwerty';

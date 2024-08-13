@@ -16,7 +16,7 @@ app.get("/", (re, res) => {
   return res.json("Fromback");
 });
 
-app.get("/a", (req, res) => {
+app.get("/messages", (req, res) => {
   const sql = "SELECT * FROM chats";
   db.query(sql, (err, data) => {
     if (err) {

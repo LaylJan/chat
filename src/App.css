@@ -21,19 +21,32 @@
   background-color: black;
   border-style: solid;
   height: 80%;
+  display: flex;
+  justify-content: end;
+  align-items: flex-end; /* Aligns items at the bottom of the container */
 }
 
 .Text {
   padding: 1%;
 }
 
+.chats {
+  display: flex;
+  flex-direction: column; /* Align items vertically */
+  align-items: flex-end; /* Align items to the right */
+}
+
 .bubble {
   display: inline-block;
-  padding: 10px 20px; /* Adjust padding to control the height and width */
+  padding: 10px; /* Adjust padding to control the height and width */
+  padding-left: 12px;
+  padding-right: 12px;
   background-color: aqua; /* Example background color */
   color: black; /* Example text color */
   border-radius: 50px; /* Creates the pill shape with rounded ends */
   font-size: 16px; /* Adjust font size */
-  text-align: center;
   margin: 2%;
+  max-width: 65%; /* Ensure the bubble doesn't exceed the container width */
+  width: fit-content; /* Adjust width to fit the content */
+  word-wrap: break-word; /* Handle long words to avoid overflow */
 }
