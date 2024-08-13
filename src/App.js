@@ -1,10 +1,13 @@
 import "./App.css";
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 
 function App() {
   const [messages, setMessages] = useState([]);
   const [newMessage, setNewMessage] = useState("");
   const [name, setName] = useState("");
+  const messagesEndRef = useRef(null);
+
+  // For Back-end
 
   useEffect(() => {
     fetch("http://localhost:3000/messages")
@@ -38,6 +41,15 @@ function App() {
     }
   };
 
+  //For Front-end
+  useEffect(() => {
+    scrollToBottom();
+  }, [messages]);
+
+  const scrollToBottom = () => {
+    messagesEndRef.current?.scrollIntoView({ behavior: "auto" });
+  };
+
   return (
     <div className="App">
       <div className="Users">
@@ -53,8 +65,10 @@ function App() {
                 {messageObj.message}
               </div>
             ))}
+            <div ref={messagesEndRef} />
           </div>
         </div>
+
         <div className="Text" style={{ display: "flex", alignItems: "center" }}>
           <input
             type="text"
