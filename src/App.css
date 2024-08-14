@@ -9,6 +9,13 @@
   width: 20%;
   height: 99%;
 }
+.Usernames {
+  padding: 2px;
+}
+
+.Usernames:hover {
+  background-color: rgba(0, 128, 128, 0.2);
+}
 
 .names {
   margin: 10px;
@@ -58,15 +65,15 @@
 }
 
 .bubble {
-  display: inline-block;
-  padding: 5px; /* Adjust padding to control the height and width */
-  background-color: #e8e8e8; /* Example background color */
-  color: black; /* Example text color */
-  border-radius: 50px; /* Creates the pill shape with rounded ends */
-  font-size: 16px; /* Adjust font size */
+  display: inline-block; /* Allows the bubble to shrink to fit its content */
+  padding: 10px 20px; /* Adjust padding as needed */
+  background-color: #e8e8e8;
+  color: black;
+  border-radius: 20px;
+  font-size: 16px;
   margin: 1%;
-  text-align: center;
-  max-width: 100%; /* Ensure the bubble doesn't exceed the container width */
-  width: auto; /* Adjust width to fit the content */
-  /* word-wrap: break-word; Handle long words to avoid overflow */
+  text-align: left;
+  max-width: 50%; /* Adjust this percentage as needed */
+  white-space: normal; /* Allow text to wrap naturally */
+  word-break: break-word; /* Break long words onto a new line if needed */
 }

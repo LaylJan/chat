@@ -5,7 +5,7 @@ function App() {
   const [messages, setMessages] = useState([]);
   const [newMessage, setNewMessage] = useState("");
   const [users, setUsers] = useState("");
-  const [name, setName] = useState("");
+  const [name, setName] = useState("Lyle");
   const messagesEndRef = useRef(null);
 
   // For Back-end
@@ -41,7 +41,6 @@ function App() {
           if (data.success) {
             setMessages([...messages, messageToSend]);
             setNewMessage(""); // Clear the input field after sending
-            setName("");
           }
         })
         .catch((err) => console.log(err));
@@ -63,7 +62,15 @@ function App() {
         <div className="names">
           <h2>Users</h2>
           {Array.isArray(users) &&
-            users.map((user, index) => <h2 key={index}>{user.name}</h2>)}
+            users.map((user, index) => (
+              <h2
+                key={index}
+                className="Usernames"
+                onClick={() => setName(user.name)}
+              >
+                {user.name}
+              </h2>
+            ))}
         </div>
       </div>
       <div style={{ width: "100%" }}>
