@@ -9,3 +9,11 @@ INSERT INTO chats (name, message) VALUES ('Pia', 'Update');
 
 -- @block
 ALTER USER 'Lyle'@'%' IDENTIFIED WITH mysql_native_password BY 'qwerty';
+
+-- @block
+TRUNCATE TABLE chats;
+
+-- @block
+CREATE TABLE users ( 
+    name VARCHAR(50) UNIQUE
+);

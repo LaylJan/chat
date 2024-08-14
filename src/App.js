@@ -17,7 +17,7 @@ function App() {
   }, []);
 
   const handleSendMessage = () => {
-    setName("asd");
+    setName("Bian");
     console.log("=========================");
 
     if (newMessage.trim()) {
@@ -35,6 +35,7 @@ function App() {
           if (data.success) {
             setMessages([...messages, messageToSend]);
             setNewMessage(""); // Clear the input field after sending
+            setName("");
           }
         })
         .catch((err) => console.log(err));
@@ -61,8 +62,9 @@ function App() {
         <div className="Messages">
           <div className="chats">
             {messages.map((messageObj, index) => (
-              <div key={index} className="bubble">
-                {messageObj.message}
+              <div key={index} className="message-container">
+                <div className="name">{messageObj.name}</div>
+                <div className="bubble">{messageObj.message}</div>
               </div>
             ))}
             <div ref={messagesEndRef} />
