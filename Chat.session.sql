@@ -17,3 +17,6 @@ TRUNCATE TABLE chats;
 CREATE TABLE users ( 
     name VARCHAR(50) UNIQUE
 );
+
+-- @block
+INSERT INTO users (name) VALUES ('Ian');

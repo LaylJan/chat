@@ -4,6 +4,7 @@ import React, { useState, useEffect, useRef } from "react";
 function App() {
   const [messages, setMessages] = useState([]);
   const [newMessage, setNewMessage] = useState("");
+  const [users, setUsers] = useState("");
   const [name, setName] = useState("");
   const messagesEndRef = useRef(null);
 
@@ -15,9 +16,14 @@ function App() {
       .then((data) => setMessages(data))
       .catch((err) => console.log(err));
   }, []);
+  useEffect(() => {
+    fetch("http://localhost:3000/users")
+      .then((res) => res.json())
+      .then((data) => setUsers(data))
+      .catch((err) => console.log(err));
+  }, []);
 
   const handleSendMessage = () => {
-    setName("Bian");
     console.log("=========================");
 
     if (newMessage.trim()) {
@@ -56,6 +62,8 @@ function App() {
       <div className="Users">
         <div className="names">
           <h2>Users</h2>
+          {Array.isArray(users) &&
+            users.map((user, index) => <h2 key={index}>{user.name}</h2>)}
         </div>
       </div>
       <div style={{ width: "100%" }}>
@@ -76,6 +84,11 @@ function App() {
             type="text"
             value={newMessage}
             onChange={(e) => setNewMessage(e.target.value)}
+            onKeyDown={(e) => {
+              if (e.key === "Enter") {
+                handleSendMessage();
+              }
+            }}
             placeholder="Type a message"
             style={{ flex: 1, padding: "10px", marginRight: "10px" }}
           />

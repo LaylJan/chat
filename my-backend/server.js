@@ -41,6 +41,17 @@ app.post("/messages", (req, res) => {
   });
 });
 
+app.get("/users", (req, res) => {
+  const sql = "SELECT * FROM users";
+  db.query(sql, (err, data) => {
+    if (err) {
+      console.error("Error executing query:", err);
+      return res.status(500).json(err);
+    }
+    return res.json(data);
+  });
+});
+
 app.listen(3000, () => {
   console.log("listening");
 });
